@@ -1,50 +1,3 @@
-# History files
-.Rhistory
-.Rapp.history
-
-# Session Data files
-.RData
-
-# Example code in package build process
-*-Ex.R
-
-# Output files from R CMD build
-/*.tar.gz
-
-# Output files from R CMD check
-/*.Rcheck/
-
-# RStudio files
-.Rproj.user/
-
-# produced vignettes
-vignettes/*.html
-vignettes/*.pdf
-
-# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
-.httr-oauth
-
-# knitr and R markdown default cache directories
-/*_cache/
-/cache/
-
-# Temporary files created by R markdown
-*.utf8.md
-*.knit.md
-
-# Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
-rsconnect/
-
-.bundle/
-*.bak
-*.log
-*~
-.~*
-.pypirc
-~*
-tmp*
-tags
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -58,6 +11,7 @@ __pycache__/
 env/
 build/
 conda-dist
+build/
 develop-eggs/
 dist/
 downloads/
@@ -69,9 +23,12 @@ parts/
 sdist/
 var/
 wheels/
+pip-wheel-metadata/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -86,13 +43,16 @@ pip-delete-this-directory.txt
 # Unit test / coverage reports
 htmlcov/
 .tox/
+.nox/
 .coverage
 .coverage.*
 .cache
 nosetests.xml
 coverage.xml
 *.cover
+*.py,cover
 .hypothesis/
+.pytest_cache/
 
 # Translations
 *.mo
@@ -101,6 +61,8 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
+db.sqlite3
+db.sqlite3-journal
 
 # Flask stuff:
 instance/
@@ -118,22 +80,38 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# IPython
+profile_default/
+ipython_config.py
+
 # pyenv
 .python-version
 
-# celery beat schedule file
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
 celerybeat-schedule
+celerybeat.pid
 
 # SageMath parsed files
 *.sage.py
 
-# dotenv
+# Environments
 .env
-
-# virtualenv
 .venv
+env/
 venv/
 ENV/
+env.bak/
+venv.bak/
 
 # Spyder project settings
 .spyderproject
@@ -147,266 +125,11 @@ ENV/
 
 # mypy
 .mypy_cache/
+.dmypy.json
+dmypy.json
 
-.vscode
-*.swp
+# Pyre type checker
+.pyre/
 
-# osx generated files
-.DS_Store
-.DS_Store?
-.Trashes
-ehthumbs.db
-Thumbs.db
-.idea
 
-# pytest
-.pytest_cache
-
-# tools/trust-nbs
-examples/.last_checked
-
-# editor
-.projectile
-.Rproj.user
-## Core latex/pdflatex auxiliary files:
-*.aux
-*.lof
-*.log
-*.lot
-*.fls
-*.out
-*.toc
-*.fmt
-*.fot
-*.cb
-*.cb2
-.*.lb
-
-## Intermediate documents:
-*.dvi
-*.xdv
-*-converted-to.*
-# these rules might exclude image files for figures etc.
-# *.ps
-# *.eps
-# *.pdf
-
-## Generated if empty string is given at "Please type another file name for output:"
-.pdf
-
-## Bibliography auxiliary files (bibtex/biblatex/biber):
-# *.bbl ## needed for arxiv
-*.bcf
-*.blg
-*-blx.aux
-*-blx.bib
-*.run.xml
-
-## Build tool auxiliary files:
-*.fdb_latexmk
-*.synctex
-*.synctex(busy)
-*.synctex.gz
-*.synctex.gz(busy)
-*.pdfsync
-
-## Auxiliary and intermediate files from other packages:
-# algorithms
-*.alg
-*.loa
-
-# achemso
-acs-*.bib
-
-# amsthm
-*.thm
-
-# beamer
-*.nav
-*.pre
-*.snm
-*.vrb
-
-# changes
-*.soc
-
-# cprotect
-*.cpt
-
-# elsarticle (documentclass of Elsevier journals)
-*.spl
-
-# endnotes
-*.ent
-
-# fixme
-*.lox
-
-# feynmf/feynmp
-*.mf
-*.mp
-*.t[1-9]
-*.t[1-9][0-9]
-*.tfm
-
-#(r)(e)ledmac/(r)(e)ledpar
-*.end
-*.?end
-*.[1-9]
-*.[1-9][0-9]
-*.[1-9][0-9][0-9]
-*.[1-9]R
-*.[1-9][0-9]R
-*.[1-9][0-9][0-9]R
-*.eledsec[1-9]
-*.eledsec[1-9]R
-*.eledsec[1-9][0-9]
-*.eledsec[1-9][0-9]R
-*.eledsec[1-9][0-9][0-9]
-*.eledsec[1-9][0-9][0-9]R
-
-# glossaries
-*.acn
-*.acr
-*.glg
-*.glo
-*.gls
-*.glsdefs
-
-# gnuplottex
-*-gnuplottex-*
-
-# gregoriotex
-*.gaux
-*.gtex
-
-# htlatex
-*.4ct
-*.4tc
-*.idv
-*.lg
-*.trc
-*.xref
-
-# hyperref
-*.brf
-
-# knitr
-*-concordance.tex
-# TODO Comment the next line if you want to keep your tikz graphics files
-*.tikz
-*-tikzDictionary
-
-# listings
-*.lol
-
-# makeidx
-*.idx
-*.ilg
-*.ind
-*.ist
-
-# minitoc
-*.maf
-*.mlf
-*.mlt
-*.mtc[0-9]*
-*.slf[0-9]*
-*.slt[0-9]*
-*.stc[0-9]*
-
-# minted
-_minted*
-*.pyg
-
-# morewrites
-*.mw
-
-# nomencl
-*.nlg
-*.nlo
-*.nls
-
-# pax
-*.pax
-
-# pdfpcnotes
-*.pdfpc
-
-# sagetex
-*.sagetex.sage
-*.sagetex.py
-*.sagetex.scmd
-
-# scrwfile
-*.wrt
-
-# sympy
-*.sout
-*.sympy
-sympy-plots-for-*.tex/
-
-# pdfcomment
-*.upa
-*.upb
-
-# pythontex
-*.pytxcode
-pythontex-files-*/
-
-# thmtools
-*.loe
-
-# TikZ & PGF
-*.dpth
-*.md5
-*.auxlock
-
-# todonotes
-*.tdo
-
-# easy-todo
-*.lod
-
-# xmpincl
-*.xmpi
-
-# xindy
-*.xdy
-
-# xypic precompiled matrices
-*.xyc
-
-# endfloat
-*.ttt
-*.fff
-
-# Latexian
-TSWLatexianTemp*
-
-## Editors:
-# WinEdt
-*.bak
-*.sav
-
-# Texpad
-.texpadtmp
-
-# Kile
-*.backup
-
-# KBibTeX
-*~[0-9]*
-
-# auto folder when using emacs and auctex
-./auto/*
-*.el
-
-# expex forward references with \gathertags
-*-tags.tex
-
-# standalone packages
-*.sta
-
-# generated if using elsarticle.cls
-*.spl
+_data/
