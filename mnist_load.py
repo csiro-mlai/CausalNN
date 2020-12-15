@@ -1,12 +1,16 @@
 import torch
 from torch import nn
 from torchvision import datasets, transforms
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, Subset
 from torchvision.utils import make_grid
-import matplotlib.pyplot as plt
 import numpy as np
-import pathlib
 
+"""
+returns a 2 class version of MNIST with one class randomly rotated.
+
+TODO: decorate with extended class label.
+TODO: rotate digits.
+"""
 def mnist_data(
         class0=3,
         class1=4,
@@ -18,8 +22,12 @@ def mnist_data(
         download=True,
         train=train,
         transform=transform)
+    ourclasses = [
+        i for i, (x,y) in enumerate(dataset)
+        if y in (class0, class1)]
+    filt_datset = Subset(dataset, ourclasses)
     data_loader = DataLoader(
-        dataset=dataset,
+        dataset=filt_datset,
         batch_size=batch_size,
         shuffle=True,
         drop_last=True)
