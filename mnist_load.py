@@ -29,7 +29,7 @@ class TwoClassMNIST(Dataset):
             class1=4,
             rotateclass=1):
         self.dataset = dataset
-        self.transform = transforms.RandomRotation(90)
+        self.transform = transforms.RandomRotation((90,90))
         self.class0 = class0
         self.class1 = class1
         self.indices0 = [
