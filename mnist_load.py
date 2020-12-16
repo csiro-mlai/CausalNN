@@ -45,7 +45,7 @@ class TwoClassMNIST(Dataset):
         rotate = random.choice((0,1)) * (label==self.class1)
         if rotate:
             im =  self.transform(im)
-        return im, (label, rotate)
+        return im, (int(label==self.class1), rotate)
 
     def __len__(self):
         return len(self.indices)
