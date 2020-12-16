@@ -43,7 +43,9 @@ class TwoClassMNIST(Dataset):
     def __getitem__(self, idx):
         im, label = self.dataset[self.indices[idx]]
         rotate = random.choice((0,1)) * (label==self.class1)
-        return self.transform(im), (label, rotate)
+        if rotate:
+            im =  self.transform(im)
+        return im, (label, rotate)
 
     def __len__(self):
         return len(self.indices)
