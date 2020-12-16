@@ -30,6 +30,8 @@ class TwoClassMNIST(Dataset):
             rotateclass=1):
         self.dataset = dataset
         self.transform = transforms.RandomRotation(90)
+        self.class0 = class0
+        self.class1 = class1
         self.indices0 = [
             i for i, (x,y) in enumerate(dataset)
             if y == class0]
@@ -40,24 +42,11 @@ class TwoClassMNIST(Dataset):
 
     def __getitem__(self, idx):
         im, label = self.dataset[self.indices[idx]]
-        rotate = random.choice((0,1)) 
-        print(repr(labels), repr(rotate))
+        rotate = random.choice((0,1)) * (label==self.class1)
         return self.transform(im), (label, rotate)
 
     def __len__(self):
         return len(self.indices)
-
-
-def mnist_data(
-        batch_size=64,
-        train=True):
-    
-    data_loader = DataLoader(
-        dataset=filt_datset,
-        batch_size=batch_size,
-        shuffle=True,
-        drop_last=True)
-    return data_loader
 
 base_transform = transforms.Compose([
     transforms.ToTensor(),
